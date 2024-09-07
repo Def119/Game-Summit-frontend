@@ -1,0 +1,103 @@
+.admin-page {
+    margin: 80px;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .admin-page h1,
+  .admin-page h2 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .search-input {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: transparent;
+  }
+  
+  .textarea,
+  .select-box {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: transparent;
+  }
+  
+  .form-label {
+    display: block;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  
+  .action-button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: transparent;
+    color: #4CAF50;
+    border: 1px solid #4CAF50;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .action-button:hover {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  .game-list {
+    margin: 20px 0;
+    max-height: 300px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+  }
+  
+  .game-list-item {
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #ddd;
+    background-color: transparent;
+  }
+  
+  .game-list-item:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .edit-form {
+    background-color: transparent;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .error-message {
+    color: red;
+    margin-top: 10px;
+  }
+  
+  .checkbox,
+  .radio-button {
+    margin-right: 5px;
+  }
+  
+
+  .delete_Button {
+    background-color: darkred;
+    /* margin-left: 100px; */
+    margin-right: auto;
+  }
+
+  .delete_Button:hover {
+    background-color: rgb(197, 9, 9);
+  }

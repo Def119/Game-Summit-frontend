@@ -1,0 +1,83 @@
+.game {
+  margin: 30px auto;
+  padding: 50px;
+}
+
+.overview {
+  display: flex;
+}
+
+.overview img {
+  margin: auto;
+  padding: 20px;
+}
+
+.box {
+  padding: 20px;
+  margin-top: 10px;
+}
+
+.box p {
+  max-width: 90%;
+}
+
+h2 {
+  margin-bottom: 5px;
+  color: rgb(119, 119, 119);
+}
+
+h5 {
+  color: rgb(119, 119, 119);
+}
+
+h3 {
+  font-size: 28px;
+  padding: 20px 0px;
+  text-align: center;
+}
+
+p {
+  color: rgb(119, 119, 119);
+}
+
+.cover-image {
+  height: 350px;
+  width: 350px;
+}
+
+/* .btn{
+    background-color: rgb(123, 29, 127);
+    color: aliceblue;
+    padding: 5px;
+    border: 5px;
+    height: 50px;
+    width: 200px;
+
+}
+
+.btn-sec{
+    border: none;
+    background-color: transparent;
+    color: rgb(123, 29, 127);
+} */
+
+.section {
+  margin-top: 50px;
+}
+
+.section p {
+  width: 70%;
+  margin: 0 auto;
+  text-align: justify;
+}
+
+.LOAD {
+  height: 600px;
+  width: 400px;
+  color: RED;
+  font-size: larger;
+}
+
+.LOAD p {
+  color: blue;
+}

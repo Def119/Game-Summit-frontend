@@ -1,0 +1,170 @@
+/* Gamespage styles for gamecards, search box */
+
+.games-page {
+  text-align: center;
+  padding: 16px;
+  background-color: transparent;
+}
+
+/* Seerch box styel */
+.search-container {
+  margin-top: 100px;
+  margin-bottom: 16px;
+}
+
+/*  EDIT DARK MODE TEXT COLOR INSIDE THE SEARCH BAR */
+
+.search-input {
+  width: 35%;
+  padding: 8px;
+  border: 2px solid #9c9a9a;
+  border-radius: 20px;
+  font-size: 1em;
+  /* text-align: center; */
+  text-indent: 25px;
+  background-color: transparent;
+  min-width: 200px;
+  color: orange;
+}
+
+.search-input:focus {
+  background-color: rgb(47, 47, 47);
+  outline: none;
+  border-color: white;
+}
+
+.search-input::placeholder {
+  color: orange;
+  font-style: italic;
+}
+
+/* Category filter buttons */
+.filter-button {
+  border: none;
+  background-color: transparent;
+  border-radius: 20px;
+  font-size: large;
+  color: lightslategrey;
+
+  transition: transform 0.2s;
+}
+
+.filter-button:hover {
+  background-color: grey;
+  color: white;
+
+  transition: transform 0.2s;
+  transform: scale(1.05);
+}
+
+/* game-reviews.css */
+.filter-button.active {
+  background-color: lightslategray;
+  color: orange;
+  font-size: medium;
+}
+
+.filter-button.active:hover {
+  background-color: lightslategray;
+  color: orange;
+  font-size: medium;
+  transform: scale(0.8);
+}
+
+/* game cards */
+.games-view {
+  /* background-color: red; */
+  min-height: 70vh;
+  display: flex;
+  justify-content: center;
+}
+
+.games-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 16px;
+  background-color: transparent;
+  align-items: center;
+  padding-left: 50px;
+}
+
+.game-card {
+  background-color: whitesmoke;
+  border-radius: 8px;
+  color: black;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  overflow: hidden;
+  transition: transform 0.2s;
+  width: 185px;
+  height: 300px;
+}
+
+.game-card:hover {
+  transform: scale(1.05);
+}
+
+.game-image {
+  /* max-width: 200px; */
+  min-width: 185px;
+  min-height: 220px;
+  /* min-height: 300px; */
+  width: 185px;
+  height: 220px;
+  object-fit:cover;
+}
+
+.game-info {
+  padding: 5px;
+  height: 80px;
+  width: 150px;
+  margin: 0;
+}
+
+.game-title {
+  margin: 0;
+  padding-top: 0;
+  padding: 0 10px;
+  padding-bottom: 4px;
+  font-size: 1.2em;
+  width:180px;
+  white-space: nowrap; /* Prevent text from wrapping */
+  overflow: hidden; /* Hide overflowed text */
+  text-overflow: ellipsis; /* Show ellipses (...) for overflowed text */
+}
+
+.game-rating {
+  margin: 2px 0 0;
+  font-size: 1em;
+  color: #888;
+  margin: 0 auto;
+  width: 80px;
+}
+
+.no-results {
+  margin-top: 20px;
+  font-size: 1.5em;
+  color: grey;
+  text-align: center;
+  width: 100%;
+}
+
+
+.search-button{
+  background-color: orange;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.search-button:hover{
+  background-color: orangered;
+}
+
+/* .filters{
+  background-color: red;
+} */

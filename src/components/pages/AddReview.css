@@ -1,0 +1,81 @@
+/* Styling for the form */
+form {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  border-radius: 10px;
+  margin: 20px auto;
+  font-family: Arial, sans-serif;
+  max-width: 80%;
+}
+
+/* Styling for the label */
+label {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+/* Styling for the textarea */
+textarea {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+  min-height: 200px;
+  max-height: 500px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+/* Styling for the button                     CHANGE THSI StyLE TO BE JJSUT LOCAL*/
+button {
+  padding: 10px 15px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 200px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+button:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Styling for the star rating */
+.star-rating {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.star-rating label {
+  margin: 0;
+}
+
+.ratestar {
+  font-size: 24px;
+  cursor: pointer;
+  color: #ddd; /* Default color for stars */
+  transition: color 0.3s ease;
+}
+
+.ratestar.filled {
+  color: #f39c12; /* Color for filled stars */
+}
+
+.ratestar:hover,
+.ratestar:hover ~ .ratestar {
+  color: #f39c12; /* Color for hovered stars */
+}

@@ -1,0 +1,82 @@
+.user-review {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: #f8f8f8;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin: 20px auto; 
+    font-family: Arial, sans-serif;
+    max-width: 80%; 
+}
+
+  
+  .review-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .user-icon {
+    font-size: 40px;
+    color: #4a90e2;
+    margin-right: 10px;
+  }
+  
+  .review-info {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .author-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+  }
+  
+  .author {
+    font-weight: bold;
+    color: #555;
+  }
+  
+  .time-ago {
+    color: #aaa;
+    font-size: 12px;
+  }
+  
+  .rating-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .age {
+    font-size: 14px;
+    color: #555;
+    margin-right: 10px;
+  }
+  
+  .star-rating .star {
+    color: #ccc;
+    font-size: 14px;
+  }
+  
+  .star-rating .star.filled {
+    color: #4a90e2;
+  }
+  
+  .review-body {
+    margin-top: 10px;
+  }
+  
+  .title {
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+  }
+  
+  .thoughts {
+    color: #666;
+    font-size: 14px;
+  }

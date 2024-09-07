@@ -1,0 +1,42 @@
+.admin-page {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .games-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .game-item {
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+  }
+  
+  .game-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .edit-game input {
+    margin: 0 5px;
+  }
+  
+  button {
+    margin-left: 10px;
+    padding: 5px 10px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  

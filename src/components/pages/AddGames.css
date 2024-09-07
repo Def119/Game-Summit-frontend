@@ -1,0 +1,58 @@
+.add-game-container {
+  width: 50%;
+  margin: 110px auto;
+  padding: 30px;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  border: 1px solid black;
+  font-size: large;
+  /* display: flex; */
+}
+
+/* MAEK THIS "form-group" TO CHANGE THE FORM STYLES. */
+.form-groups {
+  margin-bottom: 15px;
+  /* min-width: 100px; */
+  display: flex;
+  /* gap:20px; */
+}
+
+.platforms {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  width: 100%;
+}
+
+label {
+  /* display: block; */
+  margin-bottom: 5px;
+}
+
+.add-game-container select,
+.add-game-container textarea {
+  width: 100%;
+  padding: 8px;
+  /* box-sizing: border-box; */
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+textarea {
+  resize: none;
+  height: 100px;
+}
+
+.submit-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.submit-button:hover {
+  background-color: #555;
+}
