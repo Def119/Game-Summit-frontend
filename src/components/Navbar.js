@@ -8,6 +8,7 @@ import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import { useThemeContext } from "./ThemeContext";
 import { Button } from "./Button";
+import Cookies from "js-cookie";
 
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({
   width: 62,
@@ -63,6 +64,7 @@ function Navbar() {
 
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
+  const [cookieValue, setCookieValue] = useState("");
 
   const showButton = () => {
     if (window.innerWidth <= 960) {
@@ -76,6 +78,7 @@ function Navbar() {
     showButton();
     return () => {
       window.removeEventListener("resize", showButton);
+      setCookieValue(Cookies.get("token")) ;
     };
   }, []);
 
@@ -121,16 +124,18 @@ function Navbar() {
             </Link>
           </li>
           {/* Admin dashboard */}
-          <li className="nav-item">
-            <Link
-              to="/dash-board"
-              className="nav-links"
-              onClick={closeMobileMenu}
-            >
-              dashboard
-            </Link>
-          </li>
-          
+          {cookieValue && cookieValue.moderator && (
+            <li className="nav-item">
+              <Link
+                to="/dash-board"
+                className="nav-links"
+                onClick={closeMobileMenu}
+              >
+                Dashboard
+              </Link>
+            </li>
+          )}
+        
           {button && <Button buttonStyle="btn--outline">Sign Up</Button>}
           <li className="switch">
             <FormGroup>
