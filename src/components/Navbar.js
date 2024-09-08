@@ -10,6 +10,7 @@ import { useThemeContext } from "./ThemeContext";
 import { Button } from "./Button";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
+import Cookies from "js-cookie";
 
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({
   width: 62,
@@ -66,6 +67,7 @@ function Navbar() {
 
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
+  const [cookieValue, setCookieValue] = useState("");
 
   const showButton = () => {
     if (window.innerWidth <= 960) {
@@ -86,6 +88,7 @@ function Navbar() {
     }
     return () => {
       window.removeEventListener("resize", showButton);
+      setCookieValue(Cookies.get("token")) ;
     };
   }, []);
 
@@ -122,23 +125,18 @@ function Navbar() {
               Articles
             </Link>
           </li>
+          {/* Admin dashboard */}
           <li className="nav-item">
-            <Link to="/dash-board" className="nav-links" onClick={closeMobileMenu}>
-              Dashboard
+            <Link
+              to="/dash-board"
+              className="nav-links"
+              onClick={closeMobileMenu}
+            >
+              dashboard
             </Link>
           </li>
-
-          {/* Conditionally render based on login status */}
-          {isLoggedIn ? (
-            <li className="nav-item">
-              <Link to="/profile" className="nav-links" onClick={closeMobileMenu}>
-                <AccountCircleIcon style={{ fontSize: 40 }} /> {/* Profile Icon */}
-              </Link>
-            </li>
-          ) : (
-            button && <Button buttonStyle="btn--outline">Sign Up</Button>
-          )}
-
+          
+          {button && <Button buttonStyle="btn--outline">Sign Up</Button>}
           <li className="switch">
             <FormGroup>
               <FormControlLabel

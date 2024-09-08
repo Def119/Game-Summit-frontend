@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useTheme } from "@mui/material/styles";
 import "./Login.css";
+import Cookies from "js-cookie";
+import { useNavigate } from "react-router-dom";
 import { dark } from "@mui/material/styles/createPalette";
 
 function Login() {
@@ -9,12 +11,44 @@ function Login() {
   const [password, setPassword] = useState("");
 
   const theme = useTheme();
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     // Implement  authentication logic here
     console.log("Email:", email);
     console.log("Password:", password);
+
+    try {
+      const response = await fetch("http://localhost:3001/logIn", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email,
+          password,
+        }),
+      });
+
+      // Process the response
+      const data = await response.json();
+      if (response.ok) {
+        console.log("User signed up successfully:", data);
+
+        // Save the JWT token in cookies
+        Cookies.set("token", data.token, { expires: 7 }); // Set cookie with 7-day expiry
+
+        // Navigate to home page or dashboard
+        navigate("/");
+      } else {
+        console.error("Error signing up:", data.message);
+        alert(data.message || "Error signing up");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("An error occurred. Please try again.");
+    }
   };
   let textColor = null;
   if (theme.palette.mode === "dark") {

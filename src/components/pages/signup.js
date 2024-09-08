@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useTheme } from "@mui/material/styles";
+import Cookies from "js-cookie"; // Import js-cookie
 import "./Login.css";
 
 function SignUp() {
@@ -34,21 +35,25 @@ function SignUp() {
         }),
       });
 
-    //process the response
+      // Process the response
       const data = await response.json();
       if (response.ok) {
         console.log("User signed up successfully:", data);
+        
+        // Save the JWT token in cookies
+        Cookies.set("token", data.token, { expires: 7 }); // Set cookie with 7-day expiry
+
+        // Navigate to home page or dashboard
         navigate("/");
       } else {
         console.error("Error signing up:", data.message);
-        alert(data.message || "error signing in");
+        alert(data.message || "Error signing up");
       }
     } catch (error) {
       console.error("Error:", error);
-      alert(error);
+      alert("An error occurred. Please try again.");
     }
   };
-
 
   let textColor = null;
   if (theme.palette.mode === "dark") {
