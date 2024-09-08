@@ -27,7 +27,7 @@ function ReviewForm() {
     };
    
     try {
-
+      console.log(reviewData);
       const response = await fetch('http://localhost:3001/add-review', {
         method: 'POST',
         headers: {
@@ -39,7 +39,7 @@ function ReviewForm() {
 
       if (response.ok) {
         console.log('Review submitted:', reviewData);
-        setReviewText('');
+        setReviewText(''); 
         setRating(0);
         setHover(0);
         navigate(`/games/${id}`);

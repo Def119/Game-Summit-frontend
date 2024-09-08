@@ -10,6 +10,8 @@ import {
 } from "@mui/material";
 import { Phone, Email, LocationOn } from "@mui/icons-material";
 
+
+
 function ContactUs() {
   const theme = useTheme();
 
@@ -36,32 +38,55 @@ function ContactUs() {
     }));
   };
 
-  const handleSubmit = (obj) => {
+  const handleSubmit = async (obj) => {
     obj.preventDefault();
-
+  
     // Required Field Check
     if (!formData.name || !formData.email || !formData.message) {
       alert("Please Fill in All Required Fields.");
       return;
     }
-
+  
     // Email Validation
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
+  
     if (!emailPattern.test(formData.email)) {
       alert("Invalid Email Address");
       return;
     }
-
-    // Clear form after submission
-    setFormData(initialFormData);
-    console.log(localStorage.getItem("formData"));
-    alert(
-      "Hi " +
-        JSON.parse(localStorage.getItem("formData")).name +
-        ", Your Message Has Been Sent Successfully"
-    );
+  
+    const inquiryData = {
+      name: formData.name,
+      email: formData.email,
+      message: formData.message,
+    };
+  
+    try {
+      console.log(inquiryData);
+  
+      // Send data to the backend
+      const response = await fetch('http://localhost:3001/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(inquiryData),
+      });
+  
+      if (response.ok) {
+        // Clear form and reset localStorage
+        setFormData(initialFormData);
+        localStorage.removeItem("formData");
+        alert("Your message has been sent successfully!");
+      } else {
+        alert("Failed to send your inquiry. Please try again.");
+      }
+    } catch (error) {
+      console.error('Error submitting inquiry:', error);
+      alert("An error occurred while sending your inquiry.");
+    }
   };
+  
 
   return (
     <div

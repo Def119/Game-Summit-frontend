@@ -1,0 +1,28 @@
+
+.user-management {
+    padding: 20px;
+    min-height: 90vh;
+    margin: 70px 40px;
+  }
+  
+  .user-management input {
+    margin-right: 10px;
+  }
+  
+  .user-management button {
+    margin-left: 10px;
+  }
+  
+  .user-management ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .user-management li {
+    margin: 10px 0;
+  }
+  
+  .user-management .error {
+    color: red;
+  }
+  

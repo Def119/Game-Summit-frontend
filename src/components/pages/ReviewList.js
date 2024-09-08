@@ -12,7 +12,7 @@ const ReviewList = ({ gameId }) => {
   useEffect(() => {
     const fetchReviews = async () => {
       try {
-        alert(gameId);
+        // alert(gameId);
         const response = await fetch(`http://localhost:3001/reviews/${gameId}`);
         if (!response.ok) {
           throw new Error('Failed to fetch reviews');

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Navbar.css";
 import GamesIcon from "@mui/icons-material/Games";
 import Switch from "@mui/material/Switch";
@@ -10,6 +10,7 @@ import { useThemeContext } from "./ThemeContext";
 import { Button } from "./Button";
 import { LogOutButton } from "./LogoutButton";
 import Cookies from "js-cookie";
+import { jwtDecode } from "jwt-decode";
 
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({
   width: 62,
@@ -62,9 +63,10 @@ function Navbar() {
   const { toggleTheme } = useThemeContext();
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(window.innerWidth > 960);
-  const [isLoggedIn, setIsLoggedIn] = useState(!!Cookies.get("token"));
-  const [isModerator] = useState(!!Cookies.get("user"));
-  const [isAdmin] = useState(!!Cookies.get("admin"));
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [isModerator, setIsModerator] = useState(false);
+  const navigate = useNavigate();
 
   const handleClick = () => setClick((prev) => !prev);
   const closeMobileMenu = () => setClick(false);
@@ -75,18 +77,50 @@ function Navbar() {
 
   const handleLogout = () => {
     Cookies.remove("token");
-    Cookies.remove("user");
-    Cookies.remove("admin");
     setIsLoggedIn(false);
+    setIsAdmin(false);
+    setIsModerator(false);
     console.log("User logged out");
+    navigate("/"); // Redirect to home page after logout
   };
+
+  const checkAuthStatus = useCallback(() => {
+    const token = Cookies.get("token");
+    if (token) {
+      try {
+        const decodedToken = jwtDecode(token);
+        setIsLoggedIn(true);
+        setIsAdmin(decodedToken.admin);
+        setIsModerator(decodedToken.moderator);
+      } catch (error) {
+        console.error("Failed to decode token", error);
+        setIsLoggedIn(false);
+        setIsAdmin(false);
+        setIsModerator(false);
+      }
+    } else {
+      setIsLoggedIn(false);
+      setIsAdmin(false);
+      setIsModerator(false);
+    }
+  }, []);
 
   useEffect(() => {
     window.addEventListener("resize", handleResize);
+    checkAuthStatus();
+
+    // Set up an interval to periodically check auth status
+    const authCheckInterval = setInterval(checkAuthStatus, 60000); // Check every minute
+
     return () => {
       window.removeEventListener("resize", handleResize);
+      clearInterval(authCheckInterval);
     };
-  }, [handleResize]);
+  }, [handleResize, checkAuthStatus]);
+
+  const handleLogin = () => {
+    navigate("/login"); // Redirect to login page
+  };
 
   return (
     <header className="navbar">
@@ -120,7 +154,8 @@ function Navbar() {
             </Link>
           </li>
 
-          {isModerator && (
+          {/* Display Dashboard only for Admins or Moderators */}
+          {(isAdmin || isModerator) && (
             <li className="nav-item">
               <Link to="/dash-board" className="nav-links" onClick={closeMobileMenu}>
                 Dashboard
@@ -134,7 +169,9 @@ function Navbar() {
                 Log Out
               </LogOutButton>
             ) : (
-              <Button buttonStyle="btn--outline">Log In</Button>
+              <Button onClick={handleLogin} buttonStyle="btn--outline">
+                Log In
+              </Button>
             )
           )}
 
