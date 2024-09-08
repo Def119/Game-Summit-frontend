@@ -52,6 +52,8 @@ function ReviewForm() {
   };
 
   return (
+    <div className="review-cont">
+      
     <form onSubmit={handleSubmit}>
       <label htmlFor="review">Review:</label>
       <textarea
@@ -87,7 +89,9 @@ function ReviewForm() {
         })}
       </div>
       <button type="submit">Submit Review</button>
+      <button type="submit" className='add-review'>Submit Review</button>
     </form>
+    </div>
   );
 }
 

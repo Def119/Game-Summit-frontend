@@ -68,6 +68,7 @@ button:focus {
   font-size: 24px;
   cursor: pointer;
   color: #ddd; /* Default color for stars */
+  color: #6ddbdf; /* Default color for stars */
   transition: color 0.3s ease;
 }
 
@@ -78,4 +79,23 @@ button:focus {
 .ratestar:hover,
 .ratestar:hover ~ .ratestar {
   color: #f39c12; /* Color for hovered stars */
+}
+
+.review-cont {
+  display: flex;
+  width: 100%;
+  min-height: 90vh;
+  padding:80px 0px;
+}
+
+.review-cont textarea {
+  width: 80vh;
+}
+
+.review-cont label {
+  text-align: center;
+}
+
+.add-review {
+  align-self: center;
 }
