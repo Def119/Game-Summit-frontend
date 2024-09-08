@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom'; // Use this to get id from URL
 import './AddReview.css';
 
+import Cookies from "js-cookie";
+
 function ReviewForm() {
   const navigate = useNavigate();
   const { id } = useParams(); // Get the id from the URL
@@ -23,14 +25,14 @@ function ReviewForm() {
       rating,
       // add user id too
     };
-    console.log(reviewData);
-
+   
     try {
-      alert(reviewData);
+
       const response = await fetch('http://localhost:3001/add-review', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+           'Authorization': `Bearer ${Cookies.get('token')}`
         },
         body: JSON.stringify(reviewData),
       });

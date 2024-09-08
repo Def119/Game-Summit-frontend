@@ -38,7 +38,8 @@ function Login() {
 
         // Save the JWT token in cookies
         Cookies.set("token", data.token, { expires: 7 }); // Set cookie with 7-day expiry
-
+        Cookies.set("moderator", data.moderator, data.admin, { expires: 7 }); 
+        Cookies.set("admin", data.admin, { expires: 7 }); 
         // Navigate to home page or dashboard
         navigate("/");
       } else {

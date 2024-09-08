@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 import GamesIcon from "@mui/icons-material/Games";
@@ -8,8 +8,7 @@ import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import { useThemeContext } from "./ThemeContext";
 import { Button } from "./Button";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-
+import { LogOutButton } from "./LogoutButton";
 import Cookies from "js-cookie";
 
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({
@@ -60,39 +59,34 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
 }));
 
 function Navbar() {
-  const { toggleTheme, mode } = useThemeContext();
+  const { toggleTheme } = useThemeContext();
   const [click, setClick] = useState(false);
-  const [button, setButton] = useState(true);
-  const [isLoggedIn, setIsLoggedIn] = useState(false); // To track if user is logged in
+  const [button, setButton] = useState(window.innerWidth > 960);
+  const [isLoggedIn, setIsLoggedIn] = useState(!!Cookies.get("token"));
+  const [isModerator] = useState(!!Cookies.get("user"));
+  const [isAdmin] = useState(!!Cookies.get("admin"));
 
-  const handleClick = () => setClick(!click);
+  const handleClick = () => setClick((prev) => !prev);
   const closeMobileMenu = () => setClick(false);
-  const [cookieValue, setCookieValue] = useState("");
 
-  const showButton = () => {
-    if (window.innerWidth <= 960) {
-      setButton(false);
-    } else {
-      setButton(true);
-    }
+  const handleResize = useCallback(() => {
+    setButton(window.innerWidth > 960);
+  }, []);
+
+  const handleLogout = () => {
+    Cookies.remove("token");
+    Cookies.remove("user");
+    Cookies.remove("admin");
+    setIsLoggedIn(false);
+    console.log("User logged out");
   };
 
   useEffect(() => {
-    showButton();
-    // Check if the user is logged in (for example, using local storage or context)
-    const userToken = localStorage.getItem("userToken"); // Assuming you store a token when user logs in
-    if (userToken) {
-      setIsLoggedIn(true);
-    } else {
-      setIsLoggedIn(false);
-    }
+    window.addEventListener("resize", handleResize);
     return () => {
-      window.removeEventListener("resize", showButton);
-      setCookieValue(Cookies.get("token")) ;
+      window.removeEventListener("resize", handleResize);
     };
-  }, []);
-
-  window.addEventListener("resize", showButton);
+  }, [handleResize]);
 
   return (
     <header className="navbar">
@@ -125,18 +119,25 @@ function Navbar() {
               Articles
             </Link>
           </li>
-          {/* Admin dashboard */}
-          <li className="nav-item">
-            <Link
-              to="/dash-board"
-              className="nav-links"
-              onClick={closeMobileMenu}
-            >
-              dashboard
-            </Link>
-          </li>
-          
-          {button && <Button buttonStyle="btn--outline">Sign Up</Button>}
+
+          {isModerator && (
+            <li className="nav-item">
+              <Link to="/dash-board" className="nav-links" onClick={closeMobileMenu}>
+                Dashboard
+              </Link>
+            </li>
+          )}
+
+          {button && (
+            isLoggedIn ? (
+              <LogOutButton onClick={handleLogout} buttonStyle="btn--outline">
+                Log Out
+              </LogOutButton>
+            ) : (
+              <Button buttonStyle="btn--outline">Log In</Button>
+            )
+          )}
+
           <li className="switch">
             <FormGroup>
               <FormControlLabel
