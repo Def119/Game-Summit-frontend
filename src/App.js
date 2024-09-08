@@ -28,9 +28,11 @@ import AddArticle from "./components/pages/AddArticle";
 import ArticlesPage from "./components/pages/ArticlesPage";
 import ReviewList from "./components/pages/ReviewList";
 import ReviewForm from "./components/pages/AddReview";
+import Inquiries from "./components/pages/Inquiries";
 // import ManageGames from "./components/pages/ManageGames";
 import ManGame from "./components/pages/ManGames";
 import ManArticles from "./components/pages/ManArticles";
+import ManageUsers from "./components/pages/ManageUsers";
 
 function App() {
   const theme = useTheme();
@@ -51,31 +53,33 @@ function App() {
       >
         <ConditionalLayout>
           <Routes>
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<SignUp />} />
             <Route path="/" element={<Home />} />
             <Route path="/about/*" element={<AboutUs />} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="/admin" element={<Dashboard />} />
-            <Route path="/moderators" element={<ModeratorList />} />
             <Route path="/games" element={<Gamespage />} />
             <Route path="/games/:id" element={<Game />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<SignUp />} />
+            <Route path="/reviews" element={<ReviewList />} />
+            <Route path="/add-review/:id" element ={<ReviewForm/>}/>
+            
+            
+
+            {/* Handles by admin and moderators */}
             <Route path="/dash-board" element={<Dashboard />} />
 
             <Route path="/addgames" element={<AddGameForm />} />
-            {/* <Route path="/games/manage-games" element={<ManageGames />} /> */}
             <Route path="/games/manage-games" element={<ManGame />} />
 
             <Route path="/add-articles" element={<AddArticle />} />
             <Route path="/articles" element={<ArticlesPage/>} /> {/* add manage game page */}
             <Route path="/articles/manage-articles" element={<ManArticles/>} />
-
-            {/* <Route path="/sign-up" element={<Signup />} /> */}
-
-          {/* REVIEWS */}
-            {/* <Route path="/review" element={<Review />} /> */}
-            <Route path="/reviews" element={<ReviewList />} />
-            <Route path="/add-review/:id" element ={<ReviewForm/>}/>
+            <Route path="/inquiries" element={<Inquiries />} />
+            
+          
+            {/* Handled only by ADMIN */}
+            <Route path="/manage-users" element ={<ManageUsers/>} />
+            <Route path="/moderators" element={<ModeratorList />} />
 
           </Routes>
         </ConditionalLayout>
