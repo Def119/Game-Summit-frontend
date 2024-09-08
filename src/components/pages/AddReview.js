@@ -88,7 +88,6 @@ function ReviewForm() {
           );
         })}
       </div>
-      <button type="submit">Submit Review</button>
       <button type="submit" className='add-review'>Submit Review</button>
     </form>
     </div>

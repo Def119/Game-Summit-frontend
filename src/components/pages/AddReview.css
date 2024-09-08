@@ -67,7 +67,6 @@ button:focus {
 .ratestar {
   font-size: 24px;
   cursor: pointer;
-  color: #ddd; /* Default color for stars */
   color: #6ddbdf; /* Default color for stars */
   transition: color 0.3s ease;
 }
