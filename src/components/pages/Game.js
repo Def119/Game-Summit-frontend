@@ -67,8 +67,8 @@ const Game = () => {
   return (
     <div className="game">
       <div className="overview">
-        <div className="">
-          <img src={gameData.image || Pic} alt="" className="cover-image" />
+        <div className="cover-container">
+          <img src={gameData.coverPhoto || Pic} alt="" className="cover-image" />
         </div>
         <div className="box">
           <h2>{gameData.gameName}</h2>

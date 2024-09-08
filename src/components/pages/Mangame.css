@@ -1,5 +1,6 @@
 .admin-page {
     margin: 80px;
+    min-height: 80vh;
     padding: 20px;
     font-family: Arial, sans-serif;
   }
@@ -95,9 +96,13 @@
   .delete_Button {
     background-color: darkred;
     /* margin-left: 100px; */
-    margin-right: auto;
+    margin: 50px;
   }
 
   .delete_Button:hover {
     background-color: rgb(197, 9, 9);
+  }
+
+  .update_Button {
+    margin: 55px;
   }

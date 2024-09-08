@@ -8,6 +8,8 @@ import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import { useThemeContext } from "./ThemeContext";
 import { Button } from "./Button";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+
 
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({
   width: 62,
@@ -60,6 +62,7 @@ function Navbar() {
   const { toggleTheme, mode } = useThemeContext();
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // To track if user is logged in
 
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
@@ -74,6 +77,13 @@ function Navbar() {
 
   useEffect(() => {
     showButton();
+    // Check if the user is logged in (for example, using local storage or context)
+    const userToken = localStorage.getItem("userToken"); // Assuming you store a token when user logs in
+    if (userToken) {
+      setIsLoggedIn(true);
+    } else {
+      setIsLoggedIn(false);
+    }
     return () => {
       window.removeEventListener("resize", showButton);
     };
@@ -103,40 +113,36 @@ function Navbar() {
             </Link>
           </li>
           <li className="nav-item">
-            <Link
-              to="/games"
-              className="nav-links"
-              onClick={closeMobileMenu}
-            >
+            <Link to="/games" className="nav-links" onClick={closeMobileMenu}>
               Games
             </Link>
           </li>
           <li className="nav-item">
-            <Link
-              to="/articles"
-              className="nav-links"
-              onClick={closeMobileMenu}
-            >
+            <Link to="/articles" className="nav-links" onClick={closeMobileMenu}>
               Articles
             </Link>
           </li>
-          {/* Admin dashboard */}
           <li className="nav-item">
-            <Link
-              to="/dash-board"
-              className="nav-links"
-              onClick={closeMobileMenu}
-            >
-              dashboard
+            <Link to="/dash-board" className="nav-links" onClick={closeMobileMenu}>
+              Dashboard
             </Link>
           </li>
-          
-          {button && <Button buttonStyle="btn--outline">Sign Up</Button>}
+
+          {/* Conditionally render based on login status */}
+          {isLoggedIn ? (
+            <li className="nav-item">
+              <Link to="/profile" className="nav-links" onClick={closeMobileMenu}>
+                <AccountCircleIcon style={{ fontSize: 40 }} /> {/* Profile Icon */}
+              </Link>
+            </li>
+          ) : (
+            button && <Button buttonStyle="btn--outline">Sign Up</Button>
+          )}
+
           <li className="switch">
             <FormGroup>
               <FormControlLabel
                 control={<MaterialUISwitch sx={{ m: 1 }} />}
-                // label="MUI switch"
                 onClick={toggleTheme}
               />
             </FormGroup>

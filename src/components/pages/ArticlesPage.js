@@ -27,11 +27,11 @@ const ArticlesPage = () => {
   }, []);
 
   if (loading) {
-    return <div>Loading articles...</div>;
+    return <div className='LOAD'>Loading articles...</div>;
   }
 
   if (error) {
-    return <div>Error: {error}</div>;
+    return <div className='LOAD'>Error: {error}</div>;
   }
 
   return (

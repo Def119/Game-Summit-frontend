@@ -40,11 +40,20 @@ p {
   color: rgb(119, 119, 119);
 }
 
-.cover-image {
+.cover-container {
   height: 350px;
   width: 350px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* Ensures the image doesn't exceed the container */
 }
 
+.cover-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures the image covers the container without distortion */
+}
 /* .btn{
     background-color: rgb(123, 29, 127);
     color: aliceblue;
@@ -72,12 +81,13 @@ p {
 }
 
 .LOAD {
-  height: 600px;
-  width: 400px;
-  color: RED;
+  min-height: 85vh;
+  width: 100%;
+  color: orange;
   font-size: larger;
+  display: flex; /* Enable Flexbox */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  text-align: center; /* Center text inside the div */
 }
 
-.LOAD p {
-  color: blue;
-}

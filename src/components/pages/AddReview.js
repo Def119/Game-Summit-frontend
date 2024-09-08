@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom'; // Use this to get id from URL
 import './AddReview.css';
 
 function ReviewForm() {
+  const navigate = useNavigate();
   const { id } = useParams(); // Get the id from the URL
   const [reviewText, setReviewText] = useState('');
   const [rating, setRating] = useState(0);
@@ -24,6 +26,7 @@ function ReviewForm() {
     console.log(reviewData);
 
     try {
+      alert(reviewData);
       const response = await fetch('http://localhost:3001/add-review', {
         method: 'POST',
         headers: {
@@ -37,6 +40,7 @@ function ReviewForm() {
         setReviewText('');
         setRating(0);
         setHover(0);
+        navigate(`/games/${id}`);
       } else {
         console.error('Failed to submit review');
       }

@@ -94,12 +94,6 @@ function ModeratorList() {
 
   return (
     <div className="moderator-list-container">
-      {/* Button to navigate to the dashboard */}
-      <div className="button-container">
-      <button className="add-button" onClick={goToDashboard}>
-        Go to Dashboard
-      </button>
-      </div>
       <h2>Moderator List</h2>
       <ul className="moderator-list">
         {moderators.map((moderator) => (
@@ -114,7 +108,7 @@ function ModeratorList() {
           </li>
         ))}
       </ul>
-
+        <hr className="seperator" />
       <h3>Add New Moderator</h3>
       <form className="moderator-form" onSubmit={addModerator}>
         <div className="form-group">

@@ -79,11 +79,11 @@ const GamesPage = () => {
   const filteredResults = filterGames();
 
   if (loading) {
-    return <div>Loading games...</div>; 
+    return <div className="LOAD">Loading games...</div>; 
   }
 
   if (error) {
-    return <div>Error: {error}</div>; 
+    return <div className="LOAD">Error: {error}</div>; 
   }
 
   return (

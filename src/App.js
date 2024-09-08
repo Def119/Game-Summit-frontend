@@ -30,7 +30,7 @@ import ReviewList from "./components/pages/ReviewList";
 import ReviewForm from "./components/pages/AddReview";
 // import ManageGames from "./components/pages/ManageGames";
 import ManGame from "./components/pages/ManGames";
-
+import ManArticles from "./components/pages/ManArticles";
 
 function App() {
   const theme = useTheme();
@@ -68,6 +68,7 @@ function App() {
 
             <Route path="/add-articles" element={<AddArticle />} />
             <Route path="/articles" element={<ArticlesPage/>} /> {/* add manage game page */}
+            <Route path="/articles/manage-articles" element={<ManArticles/>} />
 
             {/* <Route path="/sign-up" element={<Signup />} /> */}
 
@@ -85,7 +86,7 @@ function App() {
 
 function ConditionalLayout({ children }) {
   const location = useLocation();
-  const hideLayoutRoutes = ["/admin", "/moderators"]; // Add routes where you want to hide both Navbar and Footer
+  const hideLayoutRoutes = ["/admin"]; // Add routes where you want to hide both Navbar and Footer
 
   return (
     <>

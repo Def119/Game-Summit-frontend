@@ -15,7 +15,7 @@ const AboutUs = () => {
         color: theme.palette.text.primary,
       }}
     >
-      <Container maxWidth="lg" style={{ marginTop: "2rem" }}>
+      <Container maxWidth="lg" style={{ marginTop: "4.5rem" }}>
         <center>
           <Typography variant="h2" gutterBottom>
             About Us

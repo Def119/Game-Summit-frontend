@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 import "./AddArticle.css"
 
 const AddArticle = () => {
@@ -7,6 +8,8 @@ const AddArticle = () => {
   const [images, setImages] = useState([]);
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+
+  const navigate = useNavigate();
 
   const handleFileChange = (e) => {
     setImages(e.target.files);
@@ -45,9 +48,13 @@ const AddArticle = () => {
     }
   };
 
+  const handleClick = () => {
+    navigate('/articles/manage-articles');
+  };
+
   return (
     <div className="add-article">
-      <button className='submit-button'>Manage Articles</button>
+      <button className='submit-button' onClick={handleClick}  >Manage Articles</button>
       <hr className='seperator'/>
       <h2>Add New Article</h2>
       {successMessage && <div className="success-message">{successMessage}</div>}
