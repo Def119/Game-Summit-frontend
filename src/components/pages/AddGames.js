@@ -93,7 +93,7 @@ function AddGameForm() {
       <form onSubmit={handleSubmit}>
         {/* Form Fields */}
         <div className="form-group">
-          <label htmlFor="gameName">Game Name:</label>
+          <label htmlFor="gameName" className="gameName">Game Name:</label>
           <input
             type="text"
             id="gameName"

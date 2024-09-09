@@ -24,7 +24,7 @@
   width: 100%;
 }
 
-label {
+.gameName {
   /* display: block; */
   margin-bottom: 5px;
 }

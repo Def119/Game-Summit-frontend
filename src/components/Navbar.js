@@ -133,16 +133,16 @@ function Navbar() {
           <i className={click ? "fas fa-times" : "fas fa-bars"} />
         </div>
         <ul className={click ? "nav-menu active" : "nav-menu"}>
-          <li className="nav-item">
-            <Link to="/about" className="nav-links" onClick={closeMobileMenu}>
-              About
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link to="/contact" className="nav-links" onClick={closeMobileMenu}>
-              Contact Us
-            </Link>
-          </li>
+          {/* Display Dashboard only for Admins or Moderators */}
+          {(isAdmin || isModerator) && (
+            <li className="nav-item">
+              <Link to="/dash-board" className="nav-links" onClick={closeMobileMenu}>
+                Dashboard
+              </Link>
+            </li>
+            
+          )}
+          
           <li className="nav-item">
             <Link to="/games" className="nav-links" onClick={closeMobileMenu}>
               Games
@@ -154,20 +154,24 @@ function Navbar() {
             </Link>
           </li>
 
-          {/* Display Dashboard only for Admins or Moderators */}
-          {(isAdmin || isModerator) && (
-            <li className="nav-item">
-              <Link to="/dash-board" className="nav-links" onClick={closeMobileMenu}>
-                Dashboard
-              </Link>
-            </li>
-          )}
+          
+          <li className="nav-item">
+            <Link to="/contact" className="nav-links" onClick={closeMobileMenu}>
+              Contact Us
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link to="/about" className="nav-links" onClick={closeMobileMenu}>
+              About
+            </Link>
+          </li>
 
           {button && (
             isLoggedIn ? (
-              <LogOutButton onClick={handleLogout} buttonStyle="btn--outline">
+              // <LogOutButton onClick={handleLogout} buttonStyle="btn--outline">
+              <Button onClick={handleLogout} buttonStyle="btn--outline">
                 Log Out
-              </LogOutButton>
+              </Button>
             ) : (
               <Button onClick={handleLogin} buttonStyle="btn--outline">
                 Log In
