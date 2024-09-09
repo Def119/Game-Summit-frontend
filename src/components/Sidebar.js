@@ -40,7 +40,13 @@ function Sidebar({ openSidebarToggle }) {
               <MdOutlineAdminPanelSettings className="icon" /> Moderators
             </a>
           </li>
-        )}
+
+          
+        )&& (<li className="sidebar-list-item">
+          <a href="/inquiries">
+            <MdOutlineAdminPanelSettings className="icon" /> Inquiries
+          </a>
+          </li>)}
 
         <li className="sidebar-list-item">
           <a href="/manage-users">

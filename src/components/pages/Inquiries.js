@@ -52,8 +52,8 @@ export default function Inquiries() {
   }, []);
   
 
-  if (loading) return <p>Loading inquiries...</p>;
-  if (error) return <p>Error: {error}</p>;
+  if (loading) return <p className='LOAD'>Loading inquiries...</p>;
+  if (error) return <p  className='LOAD'>Error: {error}</p>;
 
   return (
     <div className='inquiries-container'>
